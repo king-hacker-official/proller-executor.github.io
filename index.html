@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Proller LinkExecutores</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    h1 {
+      margin-bottom: 10px;
+      font-size: 2em;
+    }
+    p {
+      margin-bottom: 30px;
+      color: #aaa;
+      text-align: center;
+    }
+    .search-container {
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 400px;
+    }
+    .search-container input {
+      width: calc(100% - 20px);
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #555;
+      background-color: #333;
+      color: white;
+      font-size: 1em;
+    }
+    .link-container {
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #333;
+      padding: 15px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: white;
+      font-size: 1.1em;
+      transition: background 0.3s;
+    }
+    .link:hover {
+      background-color: #555;
+    }
+    .link img {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+    }
+    .last-updated {
+      font-size: 0.75em;
+      color: #888;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 0.8em;
+      color: #555;
+      text-align: center;
+    }
+    .disclaimer {
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #ffcccc;
+      text-align: center;
+      max-width: 400px;
+      padding: 15px;
+      border: 1px solid #ff9999;
+      border-radius: 8px;
+      background-color: #331a1a;
+    }
+    /* Estilo para a nova seção de feedback por e-mail */
+    .feedback-section {
+      margin-top: 30px;
+      text-align: center;
+      max-width: 400px;
+      padding: 15px;
+      background-color: #2a2a2a;
+      border-radius: 8px;
+      border: 1px solid #444;
+    }
+    .feedback-section p {
+        margin-bottom: 0;
+        color: #ccc;
+    }
+    .feedback-section a {
+        color: #66ccff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .feedback-section a:hover {
+        text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Proller LinkExecutores</h1>
+  <p>Links úteis para a comunidade (apenas PC)</p>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" onkeyup="filterLinks()" placeholder="Pesquisar executores..." />
+  </div>
+
+  <div class="link-container" id="linkContainer">
+    <a class="link" href="https://github.com/wcrddn/wcrddn.github.io/raw/refs/heads/main/0605/jjsploit_8.15.0_x64_en-US.msi" target="_blank">
+      <img src="https://i.imgur.com/4k9ErhF.png" alt="JJsploit Logo" />
+      JJsploit <span class="last-updated">(Verificado em: 12/06/2025)</span>
+    </a>
+
+    <a class="link" href="https://wrdcdn.net/r/118757/1749094978155/Drift1.0.4.zip" target="_blank">
+      <img src="https://i.imgur.com/lnflbnK.png" alt="Drift Logo" />
+      Drift <span class="last-updated">(Verificado em: 12/06/2025)</span>
+    </a>
+
+    <a class="link" href="https://mega.nz/file/OFdDjKgS#1A0IK9FoqWHNPO3gUaYuwWXZjj4714Q1qrfAXMyedsA" target="_blank">
+      <img src="https://i.imgur.com/2inXCzA.png" alt="Ronix Logo" />
+      Ronix Exploit <span class="last-updated">(Verificado em: 12/06/2025)</span>
+    </a>
+
+    <a class="link" href="https://getswift.gg/download" target="_blank">
+      <img src="https://i.imgur.com/dTXVvWF.png" alt="Swift Logo" />
+      Swift <span class="last-updated">(Verificado em: 12/06/2025)</span>
+    </a>
+
+    <a class="link" href="https://9ba0aa6c.salamanderprocessing.pages.dev/download/static/files/BootstrapperNew.exe" target="_blank">
+      <img src="https://i.imgur.com/Ts7ZqJq.png" alt="Solara Logo" />
+      Solara Executor <span class="last-updated">(Verificado em: 12/06/2025)</span>
+    </a>
+
+    <a class="link" href="https://wrdcdn.net/r/87882/1747944758923/plutora%20v2.0.0.zip" target="_blank">
+      <img src="https://i.imgur.com/EpTJXyv.png" alt="Plutora Logo" />
+      Plutora Executor <span class="last-updated">(Verificado em: 12/06/2025)</span>
+    </a>
+
+    <a class="link" href="https://mega.nz/file/TBdFQIaA#ndRfZArtR5KvErI-8Py_cSKO5-zoadWCAL53wkXpbFw" target="_blank">
+      <img src="https://i.imgur.com/TiItnk2.png" alt="Luna Logo" />
+      Luna Executor <span class="last-updated">(Verificado em: 12/06/2025)</span>
+    </a>
+
+    <a class="link" href="https://mega.nz/file/7RUn1LSJ#6vMl9CfOY9Iw9JTfQ6mM3HlhM2-xRxU8aTDWPPASGD0" target="_blank">
+      <img src="https://i.imgur.com/A8lbOUa.png" alt="Xeno Logo" />
+      Xeno Executor <span class="last-updated">(Verificado em: 12/06/2025)</span>
+    </a>
+
+    <a class="link" href="https://mega.nz/file/DUtXUCaI#Rv9FL5hG82tM7PyjLzeBnkaHjOQU8UauEAaBtOtbLK0" target="_blank">
+      <img src="https://i.imgur.com/fSW90ws.png" alt="Velocity Executor Logo" />
+      Velocity Executor <span class="last-updated">(Verificado em: 12/06/2025)</span>
+    </a>
+  </div>
+
+  <div class="disclaimer">
+    **Aviso:** O uso de executores pode resultar em banimento da conta Roblox. Baixe e use por sua própria conta e risco. Sempre utilize um antivírus atualizado e baixe apenas de fontes confiáveis.
+  </div>
+
+  <div class="feedback-section">
+    <p>
+      Tem sugestões, perguntas ou feedback sobre os executores?
+      Envie-nos um e-mail para:
+      <br>
+      <a href="mailto:P46151747@gmail.com">P46151747@gmail.com</a>
+    </p>
+  </div>
+
+  <footer>
+    &copy; 2025 Proller LinkExecutores. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    function filterLinks() {
+      const input = document.getElementById('searchInput');
+      const filter = input.value.toLowerCase();
+      const linkContainer = document.getElementById('linkContainer');
+      const links = linkContainer.getElementsByClassName('link');
+
+      for (let i = 0; i < links.length; i++) {
+        const linkText = links[i].textContent || links[i].innerText;
+        const nameText = links[i].querySelector('img').nextSibling.textContent.trim().toLowerCase(); 
+
+        if (nameText.includes(filter)) {
+          links[i].style.display = 'flex';
+        } else {
+          links[i].style.display = 'none';
+        }
+      }
+    }
+  </script>
+</body>
+</html>
