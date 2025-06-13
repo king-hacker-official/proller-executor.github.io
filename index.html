@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Proller LinkExecutores</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>King Hub</title>
+  <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj091j_mD1n-1cZ_78d5g0b4l1jL937pGqJg&s" type="image/x-icon">
   <style>
     body {
       margin: 0;
@@ -18,6 +19,7 @@
     h1 {
       margin-bottom: 10px;
       font-size: 2em;
+      color: #66ccff; /* Cor azul para o título */
     }
     p {
       margin-bottom: 30px;
@@ -71,6 +73,73 @@
       margin-left: auto;
       white-space: nowrap;
     }
+    .feedback-section {
+      margin-top: 50px;
+      width: 100%;
+      max-width: 400px;
+      background-color: #2a2a2a;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .feedback-section h2 {
+      text-align: center;
+      color: #66ccff;
+      margin-bottom: 20px;
+    }
+    .feedback-form label {
+      display: block;
+      margin-bottom: 5px;
+      color: #aaa;
+    }
+    .feedback-form input[type="email"],
+    .feedback-form textarea {
+      width: calc(100% - 22px);
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #555;
+      background-color: #333;
+      color: white;
+      font-size: 1em;
+    }
+    .feedback-form button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 5px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .feedback-form button:hover {
+      background-color: #0056b3;
+    }
+    .feedback-list {
+      margin-top: 30px;
+      max-height: 300px; /* Limita a altura para scroll */
+      overflow-y: auto; /* Adiciona scroll se exceder a altura */
+      padding-right: 10px; /* Espaçamento para a barra de scroll */
+    }
+    .feedback-item {
+      background-color: #333;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border-left: 4px solid #66ccff; /* Detalhe visual */
+    }
+    .feedback-item p {
+      margin: 0 0 5px 0;
+      color: white;
+      font-size: 0.95em;
+      text-align: left; /* Garante que o texto do feedback não seja centralizado */
+    }
+    .feedback-item small {
+      display: block;
+      color: #888;
+      font-size: 0.75em;
+    }
     footer {
       margin-top: 50px;
       font-size: 0.8em;
@@ -88,224 +157,113 @@
       border-radius: 8px;
       background-color: #331a1a;
     }
-    /* Estilo para a nova seção de feedback por e-mail */
-    .feedback-section {
+    .back-button { /* Usado também para o link "Ver Mais Scripts" */
       margin-top: 30px;
-      text-align: center;
+      background-color: #007bff;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      font-size: 1.1em;
+      width: 100%;
       max-width: 400px;
-      padding: 15px;
-      background-color: #2a2a2a;
-      border-radius: 8px;
-      border: 1px solid #444;
+      text-align: center;
+      box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura */
     }
-    .feedback-section p {
-        margin-bottom: 0;
-        color: #ccc;
-    }
-    .feedback-section a {
-        color: #66ccff;
-        text-decoration: none;
-        font-weight: bold;
-    }
-    .feedback-section a:hover {
-        text-decoration: underline;
-    }
-    /* Estilos para a nova seção de input e exibição de feedback */
-    .feedback-input-section, .feedbacks-display-section {
-        margin-top: 30px;
-        width: 100%;
-        max-width: 400px;
-        padding: 20px;
-        background-color: #2a2a2a;
-        border-radius: 8px;
-        border: 1px solid #444;
-    }
-    .feedback-input-section h2, .feedbacks-display-section h2 {
-        color: white;
-        text-align: center;
-        margin-top: 0;
-        margin-bottom: 20px;
-    }
-    .feedback-input-section label {
-        display: block;
-        margin-bottom: 5px;
-        color: #ccc;
-    }
-    .feedback-input-section input, .feedback-input-section textarea {
-        width: calc(100% - 22px);
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #555;
-        background-color: #333;
-        color: white;
-        font-size: 1em;
-    }
-    .feedback-input-section textarea {
-        resize: vertical;
-    }
-    .feedback-input-section button {
-        width: 100%;
-        padding: 12px 20px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 1.1em;
-        transition: background-color 0.3s;
-    }
-    .feedback-input-section button:hover {
-        background-color: #0056b3;
-    }
-    #feedbacksList {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-    .feedback-item {
-        background-color: #333;
-        padding: 15px;
-        border-radius: 8px;
-        border: 1px solid #555;
-    }
-    .feedback-item span.email {
-        font-weight: bold;
-        color: #66ccff;
-        font-size: 0.9em;
-    }
-    .feedback-item p.message {
-        margin-top: 5px;
-        margin-bottom: 0;
-        color: white;
-        word-wrap: break-word;
-    }
-    .feedback-item span.timestamp {
-        display: block;
-        font-size: 0.7em;
-        color: #888;
-        text-align: right;
-        margin-top: 10px;
+    .back-button:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
-  <h1>Proller LinkExecutores</h1>
-  <p>Links úteis para a comunidade (apenas PC)</p>
+  <header>
+    <h1>King Hub</h1>
+    <p>Os melhores executores para o seu jogo!</p>
+  </header>
 
   <div class="search-container">
-    <input type="text" id="searchInput" onkeyup="filterLinks()" placeholder="Pesquisar executores..." />
+    <input type="text" id="searchInput" onkeyup="filterLinks()" placeholder="Pesquisar executor..." aria-label="Pesquisar executores">
   </div>
 
   <div class="link-container" id="linkContainer">
-    <a class="link" href="https://github.com/wcrddn/wcrddn.github.io/raw/refs/heads/main/0605/jjsploit_8.15.0_x64_en-US.msi" target="_blank">
-      <img src="https://i.imgur.com/4k9ErhF.png" alt="JJsploit Logo" />
-      JJsploit <span class="last-updated">(Verificado em: 12/06/2025)</span>
+    <a class="link" href="https://github.com/saintydevz/21z2e12/releases/download/asd12ez/JJSploit.zip" target="_blank">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj091j_mD1n-1cZ_78d5g0b4l1jL937pGqJg&s" alt="JJSploit Logo" />
+      JJSploit <span class="last-updated">(Verificado em: 13/06/2025)</span>
     </a>
 
-    <a class="link" href="https://wrdcdn.net/r/118757/1749094978155/Drift1.0.4.zip" target="_blank">
-      <img src="https://i.imgur.com/lnflbnK.png" alt="Drift Logo" />
-      Drift <span class="last-updated">(Verificado em: 12/06/2025)</span>
+    <a class="link" href="https://github.com/saintydevz/21z2e12/releases/download/asd12ez/Drift.zip" target="_blank">
+      <img src="https://driftx.net/img/logo.png" alt="Drift Logo" />
+      Drift <span class="last-updated">(Verificado em: 13/06/2025)</span>
     </a>
 
-    <a class="link" href="https://mega.nz/file/OFdDjKgS#1A0IK9FoqWHNPO3gUaYuwWXZjj4714Q1qrfAXMyedsA" target="_blank">
-      <img src="https://i.imgur.com/2inXCzA.png" alt="Ronix Logo" />
-      Ronix Exploit <span class="last-updated">(Verificado em: 12/06/2025)</span>
+    <a class="link" href="https://cdn.discordapp.com/attachments/1188048684784795739/1206103603417735178/Fluxus_Installer.exe?ex=65e1f061&is=65cf7b61&hm=4688cf73062080a2b978a3c8e4d27572793e25b16f39d1045a195d2c206385a8&" target="_blank">
+      <img src="https://fluxus.site/wp-content/uploads/2023/10/Fluxus-Logo.png" alt="Fluxus Logo" />
+      Fluxus <span class="last-updated">(Verificado em: 13/06/2025)</span>
     </a>
 
-    <a class="link" href="https://getswift.gg/download" target="_blank">
-      <img src="https://i.imgur.com/dTXVvWF.png" alt="Swift Logo" />
-      Swift <span class="last-updated">(Verificado em: 12/06/2025)</span>
+    <a class="link" href="https://deltaexploits.net/download" target="_blank">
+      <img src="https://deltaexploits.net/img/icons/icon-72x72.png" alt="Delta Logo" />
+      Delta <span class="last-updated">(Verificado em: 13/06/2025)</span>
     </a>
 
-    <a class="link" href="https://9ba0aa6c.salamanderprocessing.pages.dev/download/static/files/BootstrapperNew.exe" target="_blank">
-      <img src="https://i.imgur.com/Ts7ZqJq.png" alt="Solara Logo" />
-      Solara Executor <span class="last-updated">(Verificado em: 12/06/2025)</span>
+    <a class="link" href="https://wearedevs.net/d/Tsunami" target="_blank">
+      <img src="https://wearedevs.net/favicon.ico" alt="Tsunami Logo" />
+      Tsunami <span class="last-updated">(Verificado em: 13/06/2025)</span>
     </a>
 
-    <a class="link" href="https://wrdcdn.net/r/87882/1747944758923/plutora%20v2.0.0.zip" target="_blank">
-      <img src="https://i.imgur.com/EpTJXyv.png" alt="Plutora Logo" />
-      Plutora Executor <span class="last-updated">(Verificado em: 12/06/2025)</span>
+    <a class="link" href="https://evon.xyz/" target="_blank">
+      <img src="https://evon.xyz/evon.svg" alt="Evon Logo" />
+      Evon <span class="last-updated">(Verificado em: 13/06/2025)</span>
     </a>
 
-    <a class="link" href="https://mega.nz/file/TBdFQIaA#ndRfZArtR5KvErI-8Py_cSKO5-zoadWCAL53wkXpbFw" target="_blank">
-      <img src="https://i.imgur.com/TiItnk2.png" alt="Luna Logo" />
-      Luna Executor <span class="last-updated">(Verificado em: 12/06/2025)</span>
+    <a class="link" href="https://mega.nz/file/bNFSWISY#MIqzhm06hXc7drmBwJUlywb7OqvrwibIVhbk4UjNE_o" target="_blank">
+      <img src="https://i.imgur.com/PdJeboR.png" alt="Visual Executor Logo" />
+      Visual Executor <span class="last-updated">(Verificado em: 13/06/2025)</span>
     </a>
 
-    <a class="link" href="https://mega.nz/file/7RUn1LSJ#6vMl9CfOY9Iw9JTfQ6mM3HlhM2-xRxU8aTDWPPASGD0" target="_blank">
-      <img src="https://i.imgur.com/A8lbOUa.png" alt="Xeno Logo" />
-      Xeno Executor <span class="last-updated">(Verificado em: 12/06/2025)</span>
+    <a class="link" href="https://github.com/saintydevz/21z2e12/releases/download/asd12ez/Trigon.zip" target="_blank">
+      <img src="https://trigonevo.com/wp-content/uploads/2024/01/Untitled-2-1536x864.png" alt="Trigon Executor Logo" />
+      Trigon Executor <span class="last-updated">(Verificado em: 13/06/2025)</span>
     </a>
 
-    <a class="link" href="https://mega.nz/file/DUtXUCaI#Rv9FL5hG82tM7PyjLzeBnkaHjOQU8UauEAaBtOtbLK0" target="_blank">
-      <img src="https://i.imgur.com/fSW90ws.png" alt="Velocity Executor Logo" />
-      Velocity Executor <span class="last-updated">(Verificado em: 12/06/2025)</span>
+    <a class="link" href="https://superfiles.net/argon/Argon-2.1.4.rar" target="_blank">
+      <img src="https://getargon.xyz/argon.png" alt="Argon Executor Logo" />
+      Argon Executor <span class="last-updated">(Verificado em: 13/06/2025)</span>
     </a>
+
   </div>
 
-  <div class="disclaimer">
-    **Aviso:** O uso de executores pode resultar em banimento da conta Roblox. Baixe e use por sua própria conta e risco. Sempre utilize um antivírus atualizado e baixe apenas de fontes confiáveis.
-  </div>
+  <a href="scripts-downloads.html" class="back-button">Ver Mais Scripts</a>
+
 
   <div class="feedback-section">
-    <p>
-      Tem sugestões, perguntas ou feedback sobre os executores?
-      Envie-nos um e-mail para:
-      <br>
-      <a href="mailto:P46151747@gmail.com">P46151747@gmail.com</a>
-    </p>
-  </div>
+    <h2>Envie seu Feedback / Pergunta</h2>
+    <form id="feedbackForm" class="feedback-form">
+      <label for="feedbackEmail">Seu E-mail (opcional):</label>
+      <input type="email" id="feedbackEmail" placeholder="seuemail@exemplo.com">
 
-  <div class="feedback-input-section">
-    <h2 style="color: white; text-align: center; margin-top: 0; margin-bottom: 20px;">Envie seu Feedback / Pergunta</h2>
-    <form id="feedbackForm">
-      <div style="margin-bottom: 15px;">
-        <label for="feedbackEmail" style="display: block; margin-bottom: 5px; color: #ccc;">Seu E-mail (Opcional, para contato):</label>
-        <input type="email" id="feedbackEmail" placeholder="anonimo@exemplo.com" style="width: calc(100% - 22px); padding: 10px; border-radius: 5px; border: 1px solid #555; background-color: #333; color: white;">
-      </div>
-      <div style="margin-bottom: 15px;">
-        <label for="feedbackMessage" style="display: block; margin-bottom: 5px; color: #ccc;">Sua Mensagem / Pergunta:</label>
-        <textarea id="feedbackMessage" rows="5" placeholder="Digite sua mensagem aqui..." required style="width: calc(100% - 22px); padding: 10px; border-radius: 5px; border: 1px solid #555; background-color: #333; color: white; resize: vertical;"></textarea>
-      </div>
-      <button type="submit">Enviar</button>
+      <label for="feedbackMessage">Sua Mensagem / Pergunta:</label>
+      <textarea id="feedbackMessage" rows="4" placeholder="Escreva sua mensagem aqui..." required></textarea>
+
+      <button type="submit">Enviar Feedback</button>
     </form>
-  </div>
 
-  <div class="feedbacks-display-section">
-    <h2 style="color: white; text-align: center; margin-bottom: 20px;">Feedbacks da Comunidade</h2>
-    <div id="feedbacksList">
-      <p id="loadingMessage">Carregando feedbacks...</p>
+    <h2 style="margin-top: 30px;">Feedbacks da Comunidade</h2>
+    <div id="feedbackList" class="feedback-list">
+      <p style="text-align: center; color: #888;">Carregando feedbacks...</p>
     </div>
   </div>
 
+
   <footer>
-    &copy; 2025 Proller LinkExecutores. Todos os direitos reservados.
+    <p>&copy; 2025 King Hub. Todos os direitos reservados.</p>
   </footer>
 
-  <div style="margin-top: 30px; text-align: center;">
-  <a href="Scripts.html" class="back-button">Ver Mais Scripts</a>
-</div>
+  <div class="disclaimer">
+    <p>Aviso Legal: O uso de softwares de terceiros pode violar os termos de serviço de alguns jogos e pode levar a penalidades. Use por sua própria conta e risco.</p>
+  </div>
 
-  
-  <script>
-    function filterLinks() {
-      const input = document.getElementById('searchInput');
-      const filter = input.value.toLowerCase();
-      const linkContainer = document.getElementById('linkContainer');
-      const links = linkContainer.getElementsByClassName('link');
-
-      for (let i = 0; i < links.length; i++) {
-        const linkText = links[i].textContent || links[i].innerText;
-        const nameText = links[i].querySelector('img').nextSibling.textContent.trim().toLowerCase(); 
-
-        if (nameText.includes(filter)) {
-          links[i].style.display = 'flex';
-        } else {
-          links[i].style.display = 'none';
-        }
-      }
-    }
-  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
@@ -314,115 +272,440 @@
 
     const supabase = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    // --- Lógica para Enviar Feedback ---
-    const feedbackForm = document.getElementById('feedbackForm');
-    if (feedbackForm) {
-      feedbackForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
+    // Função de filtro de links
+    function filterLinks() {
+      const input = document.getElementById('searchInput');
+      const filter = input.value.toLowerCase();
+      const linkContainer = document.getElementById('linkContainer');
+      const links = linkContainer.getElementsByClassName('link');
 
-        const emailInput = document.getElementById('feedbackEmail');
-        const messageInput = document.getElementById('feedbackMessage');
-
-        const email = emailInput.value.trim();
-        const message = messageInput.value.trim();
-
-        if (!message) {
-          alert('Por favor, digite sua mensagem.');
-          return;
-        }
-
-        const { data, error } = await supabase
-          .from('feedbacks')
-          .insert([
-            { email: email || 'anônimo', message: message }
-          ]);
-
-        if (error) {
-          console.error('Erro ao enviar feedback:', error);
-          alert('Ocorreu um erro ao enviar seu feedback. Detalhes: ' + error.message); // Adicionando mais detalhes do erro
+      for (let i = 0; i < links.length; i++) {
+        let text = links[i].textContent || links[i].innerText;
+        if (text.toLowerCase().indexOf(filter) > -1) {
+          links[i].style.display = "";
         } else {
-          alert('Feedback enviado com sucesso!');
-          emailInput.value = '';
-          messageInput.value = '';
-          loadFeedbacks();
+          links[i].style.display = "none";
         }
-      });
+      }
     }
 
-    // --- Lógica para Carregar e Exibir Feedbacks ---
-    const feedbacksList = document.getElementById('feedbacksList');
-    const loadingMessage = document.getElementById('loadingMessage');
+    // Função para enviar feedback
+    document.getElementById('feedbackForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const email = document.getElementById('feedbackEmail').value;
+      const message = document.getElementById('feedbackMessage').value;
 
+      if (!message.trim()) {
+        alert('Por favor, escreva uma mensagem.');
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from('feedbacks')
+        .insert([
+          { email: email || 'anônimo', message: message }
+        ]);
+
+      if (error) {
+        console.error('Erro ao enviar feedback:', error);
+        alert('Ocorreu um erro ao enviar seu feedback. Por favor, tente novamente. Detalhes: ' + error.message);
+      } else {
+        alert('Feedback enviado com sucesso!');
+        document.getElementById('feedbackEmail').value = '';
+        document.getElementById('feedbackMessage').value = '';
+        loadFeedbacks(); // Recarrega a lista de feedbacks
+      }
+    });
+
+    // Função para carregar feedbacks
     async function loadFeedbacks() {
-      if (!feedbacksList) return;
-
-      feedbacksList.innerHTML = '';
-      if (loadingMessage) loadingMessage.style.display = 'block';
+      const feedbackList = document.getElementById('feedbackList');
+      feedbackList.innerHTML = '<p style="text-align: center; color: #888;">Carregando feedbacks...</p>'; // Mensagem de carregamento
 
       const { data, error } = await supabase
         .from('feedbacks')
         .select('*')
-        .order('created_at', { ascending: false });
-
-      if (loadingMessage) loadingMessage.style.display = 'none';
+        .order('created_at', { ascending: false }); // Ordena do mais novo para o mais antigo
 
       if (error) {
         console.error('Erro ao carregar feedbacks:', error);
-        feedbacksList.innerHTML = '<p style="color: #ffcccc; text-align: center;">Erro ao carregar feedbacks.</p>';
+        feedbackList.innerHTML = '<p style="color: #ff9999; text-align: center;">Erro ao carregar feedbacks.</p>';
       } else {
+        feedbackList.innerHTML = ''; // Limpa a mensagem de carregamento
         if (data.length === 0) {
-          feedbacksList.innerHTML = '<p style="color: #ccc; text-align: center;">Nenhum feedback ainda. Seja o primeiro!</p>';
+          feedbackList.innerHTML = '<p style="text-align: center; color: #888;">Nenhum feedback ainda. Seja o primeiro!</p>';
         } else {
           data.forEach(feedback => {
             const feedbackItem = document.createElement('div');
             feedbackItem.className = 'feedback-item';
-            feedbackItem.style.cssText = `
-              background-color: #333;
-              padding: 15px;
-              border-radius: 8px;
-              border: 1px solid #555;
+            const date = new Date(feedback.created_at).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
+            feedbackItem.innerHTML = `
+              <p>${feedback.message}</p>
+              <small>De: ${feedback.email || 'Anônimo'} em ${date}</small>
             `;
-
-            const emailSpan = document.createElement('span');
-            emailSpan.className = 'email'; // Adicionado class para CSS
-            emailSpan.style.cssText = `
-              font-weight: bold;
-              color: #66ccff;
-              font-size: 0.9em;
-            `;
-            emailSpan.textContent = feedback.email;
-
-            const messageP = document.createElement('p');
-            messageP.className = 'message'; // Adicionado class para CSS
-            messageP.style.cssText = `
-              margin-top: 5px;
-              margin-bottom: 0;
-              color: white;
-              word-wrap: break-word;
-            `;
-            messageP.textContent = feedback.message;
-
-            const timeSpan = document.createElement('span');
-            timeSpan.className = 'timestamp'; // Adicionado class para CSS
-            timeSpan.style.cssText = `
-              display: block;
-              font-size: 0.7em;
-              color: #888;
-              text-align: right;
-              margin-top: 10px;
-            `;
-            const date = new Date(feedback.created_at);
-            timeSpan.textContent = date.toLocaleDateString('pt-BR') + ' ' + date.toLocaleTimeString('pt-BR', {hour: '2-digit', minute:'2-digit'});
-
-            feedbackItem.appendChild(emailSpan);
-            feedbackItem.appendChild(messageP);
-            feedbackItem.appendChild(timeSpan);
-            feedbacksList.appendChild(feedbackItem);
+            feedbackList.appendChild(feedbackItem);
           });
         }
       }
     }
 
+    // Carregar feedbacks ao carregar a página
+    document.addEventListener('DOMContentLoaded', loadFeedbacks);
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>King Hub</title>
+  <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj091j_mD1n-1cZ_78d5g0b4l1jL937pGqJg&s" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    h1 {
+      margin-bottom: 10px;
+      font-size: 2em;
+      color: #66ccff; /* Cor azul para o título */
+    }
+    p {
+      margin-bottom: 30px;
+      color: #aaa;
+      text-align: center;
+    }
+    .search-container {
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 400px;
+    }
+    .search-container input {
+      width: calc(100% - 20px);
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #555;
+      background-color: #333;
+      color: white;
+      font-size: 1em;
+    }
+    .link-container {
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #333;
+      padding: 15px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: white;
+      font-size: 1.1em;
+      transition: background 0.3s;
+    }
+    .link:hover {
+      background-color: #555;
+    }
+    .link img {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+    }
+    .last-updated {
+      font-size: 0.75em;
+      color: #888;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+    .feedback-section {
+      margin-top: 50px;
+      width: 100%;
+      max-width: 400px;
+      background-color: #2a2a2a;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .feedback-section h2 {
+      text-align: center;
+      color: #66ccff;
+      margin-bottom: 20px;
+    }
+    .feedback-form label {
+      display: block;
+      margin-bottom: 5px;
+      color: #aaa;
+    }
+    .feedback-form input[type="email"],
+    .feedback-form textarea {
+      width: calc(100% - 22px);
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #555;
+      background-color: #333;
+      color: white;
+      font-size: 1em;
+    }
+    .feedback-form button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 5px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .feedback-form button:hover {
+      background-color: #0056b3;
+    }
+    .feedback-list {
+      margin-top: 30px;
+      max-height: 300px; /* Limita a altura para scroll */
+      overflow-y: auto; /* Adiciona scroll se exceder a altura */
+      padding-right: 10px; /* Espaçamento para a barra de scroll */
+    }
+    .feedback-item {
+      background-color: #333;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border-left: 4px solid #66ccff; /* Detalhe visual */
+    }
+    .feedback-item p {
+      margin: 0 0 5px 0;
+      color: white;
+      font-size: 0.95em;
+      text-align: left; /* Garante que o texto do feedback não seja centralizado */
+    }
+    .feedback-item small {
+      display: block;
+      color: #888;
+      font-size: 0.75em;
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 0.8em;
+      color: #555;
+      text-align: center;
+    }
+    .disclaimer {
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #ffcccc;
+      text-align: center;
+      max-width: 400px;
+      padding: 15px;
+      border: 1px solid #ff9999;
+      border-radius: 8px;
+      background-color: #331a1a;
+    }
+    .back-button { /* Usado também para o link "Ver Mais Scripts" */
+      margin-top: 30px;
+      background-color: #007bff;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      font-size: 1.1em;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura */
+    }
+    .back-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Proller Hub</h1>
+    <p>Os melhores executores para o seu jogo!</p>
+  </header>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" onkeyup="filterLinks()" placeholder="Pesquisar executor..." aria-label="Pesquisar executores">
+  </div>
+
+  <div class="link-container" id="linkContainer">
+    <a class="link" href="https://github.com/saintydevz/21z2e12/releases/download/asd12ez/JJSploit.zip" target="_blank">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj091j_mD1n-1cZ_78d5g0b4l1jL937pGqJg&s" alt="JJSploit Logo" />
+      JJSploit <span class="last-updated">(Verificado em: 13/06/2025)</span>
+    </a>
+
+    <a class="link" href="https://github.com/saintydevz/21z2e12/releases/download/asd12ez/Drift.zip" target="_blank">
+      <img src="https://driftx.net/img/logo.png" alt="Drift Logo" />
+      Drift <span class="last-updated">(Verificado em: 13/06/2025)</span>
+    </a>
+
+    <a class="link" href="https://cdn.discordapp.com/attachments/1188048684784795739/1206103603417735178/Fluxus_Installer.exe?ex=65e1f061&is=65cf7b61&hm=4688cf73062080a2b978a3c8e4d27572793e25b16f39d1045a195d2c206385a8&" target="_blank">
+      <img src="https://fluxus.site/wp-content/uploads/2023/10/Fluxus-Logo.png" alt="Fluxus Logo" />
+      Fluxus <span class="last-updated">(Verificado em: 13/06/2025)</span>
+    </a>
+
+    <a class="link" href="https://deltaexploits.net/download" target="_blank">
+      <img src="https://deltaexploits.net/img/icons/icon-72x72.png" alt="Delta Logo" />
+      Delta <span class="last-updated">(Verificado em: 13/06/2025)</span>
+    </a>
+
+    <a class="link" href="https://wearedevs.net/d/Tsunami" target="_blank">
+      <img src="https://wearedevs.net/favicon.ico" alt="Tsunami Logo" />
+      Tsunami <span class="last-updated">(Verificado em: 13/06/2025)</span>
+    </a>
+
+    <a class="link" href="https://evon.xyz/" target="_blank">
+      <img src="https://evon.xyz/evon.svg" alt="Evon Logo" />
+      Evon <span class="last-updated">(Verificado em: 13/06/2025)</span>
+    </a>
+
+    <a class="link" href="https://mega.nz/file/bNFSWISY#MIqzhm06hXc7drmBwJUlywb7OqvrwibIVhbk4UjNE_o" target="_blank">
+      <img src="https://i.imgur.com/PdJeboR.png" alt="Visual Executor Logo" />
+      Visual Executor <span class="last-updated">(Verificado em: 13/06/2025)</span>
+    </a>
+
+    <a class="link" href="https://github.com/saintydevz/21z2e12/releases/download/asd12ez/Trigon.zip" target="_blank">
+      <img src="https://trigonevo.com/wp-content/uploads/2024/01/Untitled-2-1536x864.png" alt="Trigon Executor Logo" />
+      Trigon Executor <span class="last-updated">(Verificado em: 13/06/2025)</span>
+    </a>
+
+    <a class="link" href="https://superfiles.net/argon/Argon-2.1.4.rar" target="_blank">
+      <img src="https://getargon.xyz/argon.png" alt="Argon Executor Logo" />
+      Argon Executor <span class="last-updated">(Verificado em: 13/06/2025)</span>
+    </a>
+
+  </div>
+
+  <a href="scripts-downloads.html" class="back-button">Ver Mais Scripts</a>
+
+
+  <div class="feedback-section">
+    <h2>Envie seu Feedback / Pergunta</h2>
+    <form id="feedbackForm" class="feedback-form">
+      <label for="feedbackEmail">Seu E-mail (opcional):</label>
+      <input type="email" id="feedbackEmail" placeholder="seuemail@exemplo.com">
+
+      <label for="feedbackMessage">Sua Mensagem / Pergunta:</label>
+      <textarea id="feedbackMessage" rows="4" placeholder="Escreva sua mensagem aqui..." required></textarea>
+
+      <button type="submit">Enviar Feedback</button>
+    </form>
+
+    <h2 style="margin-top: 30px;">Feedbacks da Comunidade</h2>
+    <div id="feedbackList" class="feedback-list">
+      <p style="text-align: center; color: #888;">Carregando feedbacks...</p>
+    </div>
+  </div>
+
+
+  <footer>
+    <p>&copy; 2025 King Hub. Todos os direitos reservados.</p>
+  </footer>
+
+  <div class="disclaimer">
+    <p>Aviso Legal: O uso de softwares de terceiros pode violar os termos de serviço de alguns jogos e pode levar a penalidades. Use por sua própria conta e risco.</p>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = 'https://cnjiahcjihjpamumayjh.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNuamlhaGNqaWhqcGFtdW1heWpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk3NjI1MDEsImV4cCI6MjA2NTMzODUwMX0.ne1QiLv28wefAGMCulnFnohBrVSrgbbrEz_W-lIv1n8';
+
+    const supabase = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // Função de filtro de links
+    function filterLinks() {
+      const input = document.getElementById('searchInput');
+      const filter = input.value.toLowerCase();
+      const linkContainer = document.getElementById('linkContainer');
+      const links = linkContainer.getElementsByClassName('link');
+
+      for (let i = 0; i < links.length; i++) {
+        let text = links[i].textContent || links[i].innerText;
+        if (text.toLowerCase().indexOf(filter) > -1) {
+          links[i].style.display = "";
+        } else {
+          links[i].style.display = "none";
+        }
+      }
+    }
+
+    // Função para enviar feedback
+    document.getElementById('feedbackForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const email = document.getElementById('feedbackEmail').value;
+      const message = document.getElementById('feedbackMessage').value;
+
+      if (!message.trim()) {
+        alert('Por favor, escreva uma mensagem.');
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from('feedbacks')
+        .insert([
+          { email: email || 'anônimo', message: message }
+        ]);
+
+      if (error) {
+        console.error('Erro ao enviar feedback:', error);
+        alert('Ocorreu um erro ao enviar seu feedback. Por favor, tente novamente. Detalhes: ' + error.message);
+      } else {
+        alert('Feedback enviado com sucesso!');
+        document.getElementById('feedbackEmail').value = '';
+        document.getElementById('feedbackMessage').value = '';
+        loadFeedbacks(); // Recarrega a lista de feedbacks
+      }
+    });
+
+    // Função para carregar feedbacks
+    async function loadFeedbacks() {
+      const feedbackList = document.getElementById('feedbackList');
+      feedbackList.innerHTML = '<p style="text-align: center; color: #888;">Carregando feedbacks...</p>'; // Mensagem de carregamento
+
+      const { data, error } = await supabase
+        .from('feedbacks')
+        .select('*')
+        .order('created_at', { ascending: false }); // Ordena do mais novo para o mais antigo
+
+      if (error) {
+        console.error('Erro ao carregar feedbacks:', error);
+        feedbackList.innerHTML = '<p style="color: #ff9999; text-align: center;">Erro ao carregar feedbacks.</p>';
+      } else {
+        feedbackList.innerHTML = ''; // Limpa a mensagem de carregamento
+        if (data.length === 0) {
+          feedbackList.innerHTML = '<p style="text-align: center; color: #888;">Nenhum feedback ainda. Seja o primeiro!</p>';
+        } else {
+          data.forEach(feedback => {
+            const feedbackItem = document.createElement('div');
+            feedbackItem.className = 'feedback-item';
+            const date = new Date(feedback.created_at).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
+            feedbackItem.innerHTML = `
+              <p>${feedback.message}</p>
+              <small>De: ${feedback.email || 'Anônimo'} em ${date}</small>
+            `;
+            feedbackList.appendChild(feedbackItem);
+          });
+        }
+      }
+    }
+
+    // Carregar feedbacks ao carregar a página
     document.addEventListener('DOMContentLoaded', loadFeedbacks);
   </script>
 </body>
